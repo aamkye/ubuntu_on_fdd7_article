@@ -7,7 +7,11 @@ A long time ago, when I was only a kid, I had rather a good pc (as for those tim
 
 But only for some time. Because after a couple of months, I discovered the world of the Internet - P2P, Linux, and unfortunately my library of favorite music started to grow very quickly. I realized that I needed more space. And because that was the time when harddisks were not so cheap - I had to have started deleting the stuff.
 
-Today, 18 years later, I have no longer this issue as I have built my own private HomeLab/NAS/Archive.org with rather small disk space - roughly 96 TB raw space - but somehow it fits my things.
+Nowadays I have a bookshelf of BluRays, a CD music collection, PS2 games, and books. And because I am a DevOps and "data enthusiast" - I have to have a good catalog of all of these things in a digital form to preserve it for future generations like my kids. I'm pretty sure they will love old PS2 games.
+
+So today, 18 years later, I have no longer this issue of having not enough space, as I have built my own private HomeLab/NAS/Archive.org with rather small - roughly 96 TB raw space (as for these times) - but somehow it fits my things.
+
+But let's start from the beginning.
 
 ## Types of HomeLabs
 
