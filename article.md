@@ -83,46 +83,113 @@ However, I soon realized that the 8GB of RAM was not sufficient to run any workl
 
 Now without (reasonable) compromises.
 
+After months of research, comparing hardware, and counting my savings, and taking a small inspiration from [here](https://www.youtube.com/watch?v=FAy9N1vX76o), I've finally decided to build this monster:
+
 ![](./pic/image12.png)
 
 ## Hardware at my HomeLab
 
+Fractal Design Define 7 XL with 8x 120mm Be Quiet! Silent Wings 3 PWM fans and 1x 140mm Be Quiet! Silent Wings 3 PWM fan:
+
 ![](./pic/image13.jpeg)
+
+Asus X99-E WS:
 
 ![](./pic/image14.jpeg)
 
+Intel Xeon E5-2699v4 + 8x32GB (256GB) DDR4 ECC RAM:
+
 ![](./pic/image15.jpeg)
+
+BeQuiet DarkRock Pro 4 and Radeon WX 7100:
 
 ![](./pic/image16.jpeg)
 
+LSI 9300-16i HBA:
+
 ![](./pic/image17.png)
+
+4x SFF-8643 to SATA3 cables:
 
 ![](./pic/image18.jpeg)
 
+16x Fractal Design HDD trays:
+
 ![](./pic/image19.jpeg)
+
+4x WD Ultrastar HC550 16TB HDDs + 4x WD RED 4TB HDDs:
 
 ![](./pic/image20.jpeg)
 
+2x QNAP QM2-4P-384 M.2 NVMe SSD PCIe card:
+
 ![](./pic/image21.png)
+
+8x WD SN700 4TB NVMe SSDs:
 
 ![](./pic/image22.jpeg)
 
+BeQuiet Dark Power Pro 12 1500W PSU, some cable management and _voilà_.
+
 ## Motives
 
+Size:
 ![](./pic/image23.png)
+
+Speed:
+![](./pic/image24.jpeg)
+
+Reliability:
+![](./pic/image25.png)
+
+Sustainability:
+![](./pic/image26.jpeg)
+
+Information:
+![](./pic/image27.jpeg)
 
 ## Documentation at my HomeLab
 
+![](./pic/image28.png)
+
+![](./pic/image29.png)
+
 ## Networking at my HomeLab
+
+![](./pic/image30.png)
+
+<!-- TODO: CHANGEME TO NEXTDNS -->
+![](./pic/image31.png)
+
+![](./pic/image32.png)
+
+![](./pic/image33.png)
 
 ## Host Operating System at my HomeLab
 
+![](./pic/image34.png)
+
+![](./pic/image35.png)
+
 ## VM & K8s software at my HomeLab
+
+
 
 ## Monitoring at my HomeLab
 
+![](./pic/image51.png)
+
+![](./pic/image52.png)
+
+![](./pic/image53.png)
+
+
 ## Weather at my HomeLab
 
+![](./pic/image54.jpeg)
+
 ## Costs at my HomeLab
+
+![](./pic/image56.png)
 
 ## It's never enough
