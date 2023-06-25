@@ -21,7 +21,7 @@ Every self-proclaimed "data enthusiast" embarks on their grand adventure with a 
 
 ![](./pic/image1.png)
 
-\- "Look at this chaos! External disks scattered everywhere. I must gather all this storage into one central haven."
+\- "Look at this chaos! External disks are scattered everywhere. I must gather all this storage into one central haven."
 
 ### The Second Start of Progress
 
@@ -37,7 +37,7 @@ Merge the previous images, and witness the birth of a typical Reddit-esque HomeL
 
 ![](./pic/image3.png)
 
-\- "See here! Raspberry Pi, NAS devices, external disks, old PCs, and old laptops, all linked together by the almighty TrueNAS-ish software. My storage now thrives under a unified SMB share. It's a triumph!"
+\- "See here! Raspberry Pi, NAS devices, external disks, old PCs, and old laptops, all are linked together by the almighty TrueNAS-ish software. My storage now thrives under a unified SMB share. It's a triumph!"
 
 ### "The Dawn of the Small Rack"
 
@@ -59,13 +59,57 @@ However, as time marches on, their HomeLab transforms into a behemoth, and despe
 
 For now, end of the tale. Let's face facts and real examples of history.
 
+My journey began with a straightforward upgrade from a 250GB HDD to a WD MyBook 1TB hard drive. However, it quickly became apparent that the storage space was still insufficient. In search of a solution, I stumbled upon two valuable resources: r/DataHoarder and r/HomeLab. After immersing myself in countless articles and delving into the subreddits' Wiki pages, I gained the necessary knowledge.
 
+My initial choice was the WD PR4100, a relatively straightforward option. I equipped it with four 4TB WD RED HDDs and configured it in a JBOD setup. However, my further research on those subreddits revealed that this setup lacked redundancy protections. To address this, I educated myself on RAID levels and the distinctions between hardware and software RAIDs. This led me to the ZFS project—a software RAID solution. Initially, it seemed impossible to install ZFS without modifying the hardware. To seek answers, I turned to the WD forums and discovered an alternative—installing a different OS than WD CloudOS. I opted for Ubuntu Server and, after a few days of working with Ansible and KVM, achieved success:
+
+![](./pic/image7.png)
+
+But the story didn't end there. Although I managed to install ZFS on Ubuntu Server, I couldn't use it as a boot drive. Consequently, I had to install it on a USB drive. Unfortunately, this decision proved to be a significant mistake as the USB drive became corrupted after a few months, rendering my NAS unbootable. Thankfully, I had automated the reinstallation process using Ansible.
+
+Next, I explored the possibility of installing a lightweight variation of Kubernetes called K3s on my NAS. While the installation was successful, K3s immediately consumed a significant portion of the CPU time (80%) and RAM (90%). Considering the NAS had only 4GB of RAM, an Intel Pentium N3710 processor, and the OS running from a USB drive, I had to abandon this idea. However, my pursuit continued, and after further research, I came across the concept of a "small business NAS" from HPE — the HPE ProLiant MicroServer Gen10.
+
+![](./pic/image9.png)
+
+It proved to be an ideal solution for my requirements, offering four 3.5" HDD bays, one 2.5" SSD bay (sold separately), 8GB of RAM, and an AMD Opteron X3216 processor. I purchased it second-hand, installed Ubuntu Server, and began migrating my data from the WD PR4100 by gradually replacing the disks. The end result was this tower configuration:
+
+![](./pic/image10.jpeg)
+
+However, I soon realized that the 8GB of RAM was not sufficient to run any workloads on the Kubernetes (K8s) cluster, such as Prometheus, Grafana, and others. Therefore, an additional upgrade was necessary to meet my requirements.
+
+![](./pic/image11.gif)
 
 ## My current HomeLab
 
+Now without (reasonable) compromises.
+
+![](./pic/image12.png)
+
 ## Hardware at my HomeLab
 
+![](./pic/image13.jpeg)
+
+![](./pic/image14.jpeg)
+
+![](./pic/image15.jpeg)
+
+![](./pic/image16.jpeg)
+
+![](./pic/image17.png)
+
+![](./pic/image18.jpeg)
+
+![](./pic/image19.jpeg)
+
+![](./pic/image20.jpeg)
+
+![](./pic/image21.png)
+
+![](./pic/image22.jpeg)
+
 ## Motives
+
+![](./pic/image23.png)
 
 ## Documentation at my HomeLab
 
