@@ -29,7 +29,7 @@ For those who venture further into the realm of HomeLabs, especially the tech-sa
 
 ![](./pic/image2.jpeg)
 
-\- "Behold my Raspberry Pi army, united in a glorious cluster. But how do I bestow upon them the gift of storage?"
+\- "Behold my Raspberry Pi-like army, united in a glorious cluster. But how do I bestow upon them the gift of storage?"
 
 ### The "JBOA - Just Bunch of Everything" Interlude
 
