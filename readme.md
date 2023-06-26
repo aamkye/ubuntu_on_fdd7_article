@@ -1,6 +1,6 @@
 # HomeLab: How DevOps manage information and maintain high availability of the home infrastructure
 
-Get to know how DevOps compute, stores, preserves, presents, and plays with information and data but also maintains high availability of the home infrastructure using corporation-grade software and hardware
+Get to know how DevOps compute, stores, preserves, presents, and plays with information and dat_but also maintains high availability of the home infrastructure using corporation-grade software and hardware
 
 ## Introduction (Tale)
 
@@ -191,7 +191,24 @@ errors: No known data errors
 
 Speed:
 
-![](./pic/image24.jpeg)
+```bash
+...
+PS2/Games/Age Of Empires 2.iso
+    634,811,856 100% 321.85MB/s     0:00:01 (xfr#33, ir-chk-2720/2780)
+PS2/Games/Crash Nitro Kart.iso
+  3,164,798,976 100% 468.01MB/s     0:00:06 (fr#34, ir-chk-2719/2780)
+PS2/Games/Deus Ex - The Conspiracy.iso
+  1,383,399,424 100% 357.15MB/s     0:00:03 (×fr#35, ir-chk-2718/2780)
+PS2/Games/Devil May Cry 2 Dante. iso
+  4,698,767,360 100% 471.99MB/s     0:00:09 (xfr#36, ir-chk=2717/2780)
+PS2/Games/Devil May Cry 2 Lucia.iso
+  4,698,767,360 100% 482.67MB/s     0:00:09 (xfr#37, ir-chk=2716/2780)
+PS2/Games/Devil May Cry 3 Special Edition.iso
+  4,499,308,544 100% 427.42MB/s     0:00:10 (xfr#38, ir-chk-2715/2780)
+PS2/Games/Devil May Cry.iso
+  1,246,822,400  26% 594.83MB/s     0:00:05
+...
+```
 
 Benchmark results:
 
@@ -353,7 +370,28 @@ Observability and sustainability:
 
 ![](./pic/image27.jpeg)
 
-![](./pic/image26.jpeg)
+```bash
+  pool: tortoise
+ state: DEGRADED
+status: One or more devices is currently being resilvered. The pool will
+        continue to function, possibly in a degraded state.
+action: Wait for the resilver to complete.
+  scan: resilver in progress since Sat May 6 08:42:29 2023
+        7.51G scanned at 135M/s, 2.42G issued at 43.5M/s, 5.11T total
+        598M resilvered, 0.05% done, 1 days 10:12:37 to go
+config:
+        NAME                                       STATE     READ WRITE CKSUM
+        tortoise                                   DEGRADED     0     0     0
+          raidz1-0                                 DEGRADED   498   572     0
+            SCSi-SATA_NDC_ND4003FFBX-6_V138JJBG    DEGRADED   383   233     0  too many errors
+            Scsi-SATA_WDC_WD4003FFBX-6_V1JAPH9G    DEGRADED   385   415     0  too many errors
+            SCSi-SATA_WDC_WD4003FFBX-6_V1JASWGG    DEGRADED   472   271     0  too many errors
+            scsi-SATA_WDC_WD4003FFBX-6_VBGJN8SF    ONLINE       0     0     0  (resilvering)
+        logs
+          mirror-1                                 ONLINE       0     0     0
+            nume-WD_Red_SN700_2000GB_23024R800705  ONLINE       0     0     0
+            nvme-WD_Red_SN700_2000GB_23024R800272  ONLINE       0     0     0
+```
 
 ## Documentation at my HomeLab
 
@@ -372,8 +410,6 @@ Observability and sustainability:
 ![](./pic/image33.png)
 
 ## Host Operating System at my HomeLab
-
-![](./pic/image34.png)
 
 ![](./pic/image35.png)
 
