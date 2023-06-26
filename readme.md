@@ -8,7 +8,7 @@ Once upon a time, back in the Stone Age of my childhood, I possessed a PC that w
 
 But alas, this blissful existence was not meant to last. After a few months, I stumbled upon the mystical realm of the Internet—P2P, Linux, and all that jazz. As fate would have it, my music library started multiplying faster than gremlins in a swimming pool. It dawned on me that I desperately needed more space. Ah, the dark ages of hard disk scarcity, when they cost a fortune! I was left with no choice but to embark on a ruthless mission of deletion.
 
-Fast forward to the present day, where I now possess a bookshelf adorned with BluRays, a vast collection of CDs, an arsenal of PS2 games, and more books than a library. As a self-proclaimed DevOps maestro and "data enthusiast," I felt obligated to digitize and preserve all these treasures for future generations — especially my own spawn. I have a sneaking suspicion that my kids will go bonkers for those ancient PS2 games.
+Fast forward to the present day, where I now possess a bookshelf adorned with BluRays, a vast collection of CDs, an arsenal of PS2 games, and more books than a library. As a self-proclaimed DevOps maestro and "data enthusiast, " I felt obligated to digitize and preserve all these treasures for future generations — especially my own spawn. I have a sneaking suspicion that my kids will go bonkers for those ancient PS2 games.
 
 And lo and behold, after two decades of technological advancement, I no longer suffer from the "not enough space" syndrome. Behold, my private HomeLab/NAS/Archive.org hybrid, lovingly crafted to house my hoard of goodies. It may not be the size of a small planet, but its humble 96 terabytes of raw space (considered puny by today's standards) somehow manages to accommodate my vast collection.
 
@@ -17,6 +17,7 @@ But enough reminiscing, let us venture back to where it all began, where my tale
 ## Tales of HomeLabs and the Adventures of their Owners (as I see it)
 
 ### The First Step of the Journey
+
 Every self-proclaimed "data enthusiast" embarks on their grand adventure with a humble image and a relatable comment:
 
 ![](./pic/image1.png)
@@ -132,7 +133,6 @@ cheetah   7.27T   825G  6.46T        -         -     0%    11%  1.00x    ONLINE 
 elephant  58.2T  14.6T  43.6T        -         -     0%    25%  1.00x    ONLINE  -
 tortoise  14.5T   855G  13.7T        -         -    14%     5%  1.00x    ONLINE  -
 ```
-
 
 Reliability:
 
@@ -425,14 +425,52 @@ config:
 
 ![](./pic/image53.png)
 
-
 ## Weather at my HomeLab
 
 ![](./pic/image54.jpeg)
 
 ## Costs at my HomeLab
 
-![](./pic/image56.png)
+| Name                                | q.  | per ea.   | Cost PLN    | Cost USD  |
+| ----------------------------------- | --- | --------- | ----------- | --------- |
+|   Stage1 (ok):                      |     |           | PLN 10.800  | $2.615    |
+| Fractal DD7 XL                      | 1   | PLN 800   | PLN 800     | $194      |
+| Asus X99-E WS                       | 1   | PLN 2.200 | PLN 2.200   | $533      |
+| Xeon E5-2699v4                      | 1   | PLN 1.250 | PLN 1.250   | $303      |
+| Radeon PRO WX7100                   | 1   | PLN 900   | PLN 900     | $218      |
+| BeQuiet Dark Power Pro 12 1500W     | 1   | PLN 1.700 | PLN 1.700   | $412      |
+| Hynix 32GB RDDIM DDR4               | 8   | PLN 275   | PLN 2.200   | $533      |
+| BeQuiet Dark Rock Pro 4             | 1   | PLN 400   | PLN 400     | $97       |
+| BeQuiet Silent Wings Pro 4 140MM    | 1   | PLN 150   | PLN 150     | $36       |
+| BeQuiet Silent Wings Pro 4 120MM    | 8   | PLN 150   | PLN 1.200   | $291      |
+| ----------------------------------- | --- | --------- | ----------- | --------- |
+|   Stage2 (ok):                      |     |           | PLN 4.600   | $1.114    |
+| HBA LSI 9400-16i                    | 1   | PLN 2.400 | PLN 2.400   | $581      |
+| Fractal FD-A-TRAY-002               | 16  | PLN 88    | PLN 1.400   | $339      |
+| Fractal FD-A-CAGE-001               | 2   | PLN 400   | PLN 800     | $194      |
+| ----------------------------------- | --- | --------- | ----------- | --------- |
+|   Stage3.1 (ok):                    |     |           | PLN 6.325   | $1.532    |
+| QM2-4P-384                          | 1   | PLN 683   | PLN 683     | $165      |
+| WD RED SN700 2TB                    | 4   | PLN 764   | PLN 3.057   | $740      |
+| WD Ultrastar 16TB                   | 2   | PLN 1.293 | PLN 2.585   | $626      |
+| ----------------------------------- | --- | --------- | ----------- | --------- |
+|   Stage3.2 (ok):                    |     |           | PLN 6.325   | $1.532    |
+| QM2-4P-384                          | 1   | PLN 683   | PLN 683     | $165      |
+| WD RED SN700 2TB                    | 4   | PLN 764   | PLN 3.057   | $740      |
+| WD Ultrastar 16TB                   | 2   | PLN 1.293 | PLN 2.585   | $626      |
+| ----------------------------------- | --- | --------- | ----------- | --------- |
+|   Stage4.0 (in-progress)            |     |           | PLN 10.341  | $2.504    |
+| WD Ultrastar 16TB                   | 8   | PLN 1.293 | PLN 10.341  | $2.504    |
+| ----------------------------------- | --- | --------- | ----------- | --------- |
+|   Perfs (ok):                       |     |           | PLN 578     | $140      |
+| Thermal Paste                       | 1   | PLN 100   | PLN 100     | $24       |
+| PWM cable extenders                 | 4   | PLN 23    | PLN 90      | $22       |
+| Sata power 1-to-2 extender          | 4   | PLN 30    | PLN 120     | $29       |
+| RJ45 CAT6a                          | 1   | PLN 88    | PLN 88      | $21       |
+| SFF-8643 to 4xSata                  | 4   | PLN 45    | PLN 180     | $44       |
+| ----------------------------------- | --- | --------- | ----------- | --------- |
+|   Total total                       |     |           | PLN 28.628  | $6.932    |
+
 
 ![](./pic/image57.png)
 
