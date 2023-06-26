@@ -125,111 +125,231 @@ We add all together, do some cable management, and _voilà_.
 
 Size:
 
-![](./pic/image23.png)
+```bash
+zpool list
+NAME       SIZE  ALLOC   FREE  CKPOINT  EXPANDSZ   FRAG    CAP  DEDUP    HEALTH  ALTROOT
+cheetah   7.27T   825G  6.46T        -         -     0%    11%  1.00x    ONLINE  -
+elephant  58.2T  14.6T  43.6T        -         -     0%    25%  1.00x    ONLINE  -
+tortoise  14.5T   855G  13.7T        -         -    14%     5%  1.00x    ONLINE  -
+```
 
 
 Reliability:
 
-![](./pic/image25.png)
+```bash
+zpool status
+  pool: cheetah
+ state: ONLINE
+config:
 
+        NAME                                       STATE     READ WRITE CKSUM
+        cheetah                                    ONLINE       0     0     0
+          raidz1-0                                 ONLINE       0     0     0
+            nvme-WD_Red_SN700_2000GB_23024R800274  ONLINE       0     0     0
+            nvme-WD_Red_SN700_2000GB_23024R800291  ONLINE       0     0     0
+            nvme-WD_Red_SN700_2000GB_23024R800133  ONLINE       0     0     0
+            nvme-WD_Red_SN700_2000GB_23024R800267  ONLINE       0     0     0
+
+errors: No known data errors
+
+  pool: elephant
+ state: ONLINE
+config:
+
+        NAME                                       STATE     READ WRITE CKSUM
+        elephant                                   ONLINE       0     0     0
+          raidz1-0                                 ONLINE       0     0     0
+            scsi-SATA_WDC_WUH721816AL_2BKW62BT     ONLINE       0     0     0
+            scsi-SATA_WDC_WUH721816AL_2BKZBNDT     ONLINE       0     0     0
+            scsi-SATA_WDC_WUH721816AL_2PJ0LDMT     ONLINE       0     0     0
+            scsi-SATA_WDC_WUH721816AL_4YGA3LWH     ONLINE       0     0     0
+        logs
+          mirror-1                                 ONLINE       0     0     0
+            nvme-WD_Red_SN700_2000GB_23024R800200  ONLINE       0     0     0
+            nvme-WD_Red_SN700_2000GB_23024R800835  ONLINE       0     0     0
+
+errors: No known data errors
+
+  pool: tortoise
+ state: ONLINE
+config:
+
+        NAME                                       STATE     READ WRITE CKSUM
+        tortoise                                   ONLINE       0     0     0
+          raidz1-0                                 ONLINE       0     0     0
+            scsi-SATA_WDC_WD4003FFBX-6_V1J8JJBG    ONLINE       0     0     0
+            scsi-SATA_WDC_WD4003FFBX-6_V1JAPH9G    ONLINE       0     0     0
+            scsi-SATA_WDC_WD4003FFBX-6_V1JASWGG    ONLINE       0     0     0
+            scsi-SATA_WDC_WD4003FFBX-6_VBGJN8SF    ONLINE       0     0     0
+        logs
+          mirror-1                                 ONLINE       0     0     0
+            nvme-WD_Red_SN700_2000GB_23024R800705  ONLINE       0     0     0
+            nvme-WD_Red_SN700_2000GB_23024R800272  ONLINE       0     0     0
+
+errors: No known data errors
+```
 
 Speed:
 
 ![](./pic/image24.jpeg)
 
-Benchmark results (with warm cache):
+Benchmark results:
 
 ```bash
-> fio --direct=1 --rw=[write|read|randwrite|randread] --bs=[4k|1m] --iodepth=1 --runtime=120 --numjobs=1 --time_based --group_reporting --name=iops-test-job --size=1g
+# Small, medium, and large files (4k/1m/32m) on sequential and random read/write
+> fio --direct=1 --rw=[write|read|randwrite|randread] --bs=[4k|1m|32m] --iodepth=1 --runtime=120 --numjobs=1 --time_based --group_reporting --name=iops-speed-test-job --size=1g
 ```
 
-| Name        | Type        | Speed (avg)     | IOPS (avg) | BS  |
-| ----------- | ----------- | --------------- | --------- | ---- |
-| `Cheetah`   | `write`     | `358.90 MiB/s`  | `89.72K`  | `4k` |
-| `Cheetah`   | `randwrite` | `350.21 MiB/s`  | `58.54K`  | `4k` |
-| `Cheetah`   | `read`      | `734.14 MiB/s`  | `183.53K` | `4k` |
-| `Cheetah`   | `randread`  | `592.61 MiB/s`  | `148.15K` | `4k` |
-| `Cheetah`   | `write`     | `3.65 GiB/s`    | `3655`    | `1m` |
-| `Cheetah`   | `randwrite` | `3.62 GiB/s`    | `3626`    | `1m` |
-| `Cheetah`   | `read`      | `5.46 GiB/s`    | `5.46K`   | `1m` |
-| `Cheetah`   | `randread`  | `5.18 GiB/s`    | `5.18K`   | `1m` |
-| ----------- | ----------- | --------------- | --------- | ---- |
-| `Elephant`  | `write`     | `335.33 MiB/s`  | `83.83K`  | `4k` |
-| `Elephant`  | `randwrite` | `302.10 MiB/s`  | `75.52K`  | `4k` |
-| `Elephant`  | `read`      | `718.03 MiB/s`  | `179.50K` | `4k` |
-| `Elephant`  | `randread`  | `596.53 MiB/s`  | `149.13K` | `4k` |
-| `Elephant`  | `write`     | `754.25 MiB/s`  | `736`     | `1m` |
-| `Elephant`  | `randwrite` | `571.56 MiB/s`  | `558`     | `1m` |
-| `Elephant`  | `read`      | `5.40 GiB/s`    | `5400`    | `1m` |
-| `Elephant`  | `randread`  | `5.13 GiB/s`    | `5133`    | `1m` |
-| ----------- | ----------- | --------------- | --------- | ---- |
-| `Tortoise`  | `write`     | `243.74 MiB/s`  | `60.93K`  | `4k` |
-| `Tortoise`  | `randwrite` | `224.53 MiB/s`  | `56.13K`  | `4k` |
-| `Tortoise`  | `read`      | `731.10 MiB/s`  | `182.77K` | `4k` |
-| `Tortoise`  | `randread`  | `570.39 MiB/s`  | `142.59K` | `4k` |
-| `Tortoise`  | `write`     | `452.69 MiB/s`  | `442`     | `1m` |
-| `Tortoise`  | `randwrite` | `475.20 MiB/s`  | `464`     | `1m` |
-| `Tortoise`  | `read`      | `5.15 GiB/s`    | `5151`    | `1m` |
-| `Tortoise`  | `randread`  | `5.14 GiB/s`    | `5145`    | `1m` |
+| ZFS Pool Name | Test Type   | BS    | Speed (avg)     | IOPS (avg)  |
+| ------------- | ----------- | ----- | --------------- | ----------- |
+| `Cheetah`     | `write`     | `4k`  | `358.90 MiB/s`  | `89.72K`    |
+| `Cheetah`     | `write`     | `1m`  | `3.65 GiB/s`    | `3655`      |
+| `Cheetah`     | `write`     | `32m` | `2.75 GiB/s`    | `85`        |
+| `Cheetah`     | `randwrite` | `4k`  | `350.21 MiB/s`  | `58.54K`    |
+| `Cheetah`     | `randwrite` | `1m`  | `3.62 GiB/s`    | `3626`      |
+| `Cheetah`     | `randwrite` | `32m` | `2.85 GiB/s`    | `89`        |
+| `Cheetah`     | `read`      | `4k`  | `734.14 MiB/s`  | `183.53K`   |
+| `Cheetah`     | `read`      | `1m`  | `5.46 GiB/s`    | `5.46K`     |
+| `Cheetah`     | `read`      | `32m` | `4.54 GiB/s`    | `142`       |
+| `Cheetah`     | `randread`  | `4k`  | `592.61 MiB/s`  | `148.15K`   |
+| `Cheetah`     | `randread`  | `1m`  | `5.18 GiB/s`    | `5.18K`     |
+| `Cheetah`     | `randread`  | `32m` | `4.57 GiB/s`    | `143`       |
+| ------------- | ----------- | ----- | --------------- | ----------- |
+| `Elephant`    | `write`     | `4k`  | `335.33 MiB/s`  | `83.83K`    |
+| `Elephant`    | `write`     | `1m`  | `754.25 MiB/s`  | `736`       |
+| `Elephant`    | `write`     | `32m` | `671.65 MiB/s`  | `20`        |
+| `Elephant`    | `randwrite` | `4k`  | `302.10 MiB/s`  | `75.52K`    |
+| `Elephant`    | `randwrite` | `1m`  | `571.56 MiB/s`  | `558`       |
+| `Elephant`    | `randwrite` | `32m` | `745.84 MiB/s`  | `22`        |
+| `Elephant`    | `read`      | `4k`  | `718.03 MiB/s`  | `179.50K`   |
+| `Elephant`    | `read`      | `1m`  | `5.40 GiB/s`    | `5400`      |
+| `Elephant`    | `read`      | `32m` | `4.56 GiB/s`    | `142`       |
+| `Elephant`    | `randread`  | `4k`  | `596.53 MiB/s`  | `149.13K`   |
+| `Elephant`    | `randread`  | `1m`  | `5.13 GiB/s`    | `5133`      |
+| `Elephant`    | `randread`  | `32m` | `4.47 GiB/s`    | `139`       |
+| ------------- | ----------- | ----- | --------------- | ----------- |
+| `Tortoise`    | `write`     | `4k`  | `243.74 MiB/s`  | `60.93K`    |
+| `Tortoise`    | `write`     | `1m`  | `452.69 MiB/s`  | `442`       |
+| `Tortoise`    | `write`     | `32m` | `509.24 MiB/s`  | `15`        |
+| `Tortoise`    | `randwrite` | `4k`  | `224.53 MiB/s`  | `56.13K`    |
+| `Tortoise`    | `randwrite` | `1m`  | `475.20 MiB/s`  | `464`       |
+| `Tortoise`    | `randwrite` | `32m` | `581.77 MiB/s`  | `17`        |
+| `Tortoise`    | `read`      | `4k`  | `731.10 MiB/s`  | `182.77K`   |
+| `Tortoise`    | `read`      | `1m`  | `5.15 GiB/s`    | `5151`      |
+| `Tortoise`    | `read`      | `32m` | `4.53 GiB/s`    | `141`       |
+| `Tortoise`    | `randread`  | `4k`  | `570.39 MiB/s`  | `142.59K`   |
+| `Tortoise`    | `randread`  | `1m`  | `5.14 GiB/s`    | `5145`      |
+| `Tortoise`    | `randread`  | `32m` | `4.56 GiB/s`    | `142`       |
 
-What is worth mentioning - Observability of ZFS ARC Cache system engagement (as it goes from 0 through 4.4 GiB/s to over 9 GiB/s):
+_Two more things:_
+
+ZFS LOG Cache on write:
 
 ```bash
-> fio --direct=1 --rw=randread --bs=16m --iodepth=1 --runtime=120 --numjobs=4 --time_based --group_reporting --name=iops-test-job --size=1g --eta-newline=5
-iops-test-job: (g=0): rw=randread, bs=(R) 16.0MiB-16.0MiB, (W) 16.0MiB-16.0MiB, (T) 16.0MiB-16.0MiB, ioengine=psync, iodepth=1
-...
+> fio --direct=1 --rw=write --bs=32m --iodepth=1 --runtime=120 --numjobs=1 --time_based --group_reporting --name=iops-speed-test-job --size=1g --eta-newline=5
+iops-speed-test-job: (g=0): rw=write, bs=(R) 32.0MiB-32.0MiB, (W) 32.0MiB-32.0MiB, (T) 32.0MiB-32.0MiB, ioengine=psync, iodepth=1
 fio-3.33
-Starting 4 processes
-iops-test-job: Laying out IO file (1 file / 1024MiB)
-iops-test-job: Laying out IO file (1 file / 1024MiB)
-iops-test-job: Laying out IO file (1 file / 1024MiB)
-Jobs: 4 (f=4): [r(4)][6.6%][r=4388MiB/s][r=274 IOPS][eta 01m:53s]
-Jobs: 4 (f=4): [r(4)][11.6%][r=4452MiB/s][r=278 IOPS][eta 01m:47s]
-Jobs: 4 (f=4): [r(4)][16.5%][r=7944MiB/s][r=496 IOPS][eta 01m:41s]
-Jobs: 4 (f=4): [r(4)][21.5%][r=7816MiB/s][r=488 IOPS][eta 01m:35s]
-Jobs: 4 (f=4): [r(4)][26.7%][r=7688MiB/s][r=480 IOPS][eta 01m:28s]
-Jobs: 4 (f=4): [r(4)][31.4%][r=7920MiB/s][r=495 IOPS][eta 01m:23s]
-Jobs: 4 (f=4): [r(4)][36.4%][r=7672MiB/s][r=479 IOPS][eta 01m:17s]
-Jobs: 4 (f=4): [r(4)][41.3%][r=7808MiB/s][r=488 IOPS][eta 01m:11s]
-Jobs: 4 (f=4): [r(4)][46.3%][r=8056MiB/s][r=503 IOPS][eta 01m:05s]
-Jobs: 4 (f=4): [r(4)][51.2%][r=8104MiB/s][r=506 IOPS][eta 00m:59s]
-Jobs: 4 (f=4): [r(4)][56.2%][r=7960MiB/s][r=497 IOPS][eta 00m:53s]
-Jobs: 4 (f=4): [r(4)][61.2%][r=7976MiB/s][r=498 IOPS][eta 00m:47s]
-Jobs: 4 (f=4): [r(4)][66.1%][r=8072MiB/s][r=504 IOPS][eta 00m:41s]
-Jobs: 4 (f=4): [r(4)][71.1%][r=7936MiB/s][r=496 IOPS][eta 00m:35s]
-Jobs: 4 (f=4): [r(4)][76.0%][r=8649MiB/s][r=540 IOPS][eta 00m:29s]
-Jobs: 4 (f=4): [r(4)][81.0%][r=8777MiB/s][r=548 IOPS][eta 00m:23s]
-Jobs: 4 (f=4): [r(4)][86.0%][r=9145MiB/s][r=571 IOPS][eta 00m:17s]
-Jobs: 4 (f=4): [r(4)][90.9%][r=9008MiB/s][r=563 IOPS][eta 00m:11s]
-Jobs: 4 (f=4): [r(4)][95.9%][r=8745MiB/s][r=546 IOPS][eta 00m:05s]
-Jobs: 4 (f=4): [r(4)][100.0%][r=8784MiB/s][r=549 IOPS][eta 00m:00s]
-iops-test-job: (groupid=0, jobs=4): err= 0: pid=289652: Mon Jun 26 10:25:25 2023
-  read: IOPS=475, BW=7604MiB/s (7974MB/s)(891GiB/120006msec)
-    clat (msec): min=2, max=953, avg= 8.41, stdev=52.85
-     lat (msec): min=2, max=953, avg= 8.41, stdev=52.85
+Starting 1 process
+Jobs: 1 (f=1): [W(1)][6.6%][w=2430MiB/s][w=75 IOPS][eta 01m:53s]
+Jobs: 1 (f=1): [W(1)][11.6%][w=2723MiB/s][w=85 IOPS][eta 01m:47s]
+Jobs: 1 (f=1): [W(1)][16.5%][w=256MiB/s][w=8 IOPS][eta 01m:41s]
+Jobs: 1 (f=1): [W(1)][21.5%][w=96.0MiB/s][w=3 IOPS][eta 01m:35s]
+Jobs: 1 (f=1): [W(1)][26.7%][w=64.0MiB/s][w=2 IOPS][eta 01m:28s]
+Jobs: 1 (f=1): [W(1)][31.4%][w=32.0MiB/s][w=1 IOPS][eta 01m:23s]
+Jobs: 1 (f=1): [W(1)][36.4%][w=32.0MiB/s][w=1 IOPS][eta 01m:17s]
+Jobs: 1 (f=1): [W(1)][41.3%][w=512MiB/s][w=16 IOPS][eta 01m:11s]
+Jobs: 1 (f=1): [W(1)][46.3%][w=256MiB/s][w=8 IOPS][eta 01m:05s]
+Jobs: 1 (f=1): [W(1)][51.2%][w=96.1MiB/s][w=3 IOPS][eta 00m:59s]
+Jobs: 1 (f=1): [W(1)][56.2%][w=64.1MiB/s][w=2 IOPS][eta 00m:53s]
+Jobs: 1 (f=1): [W(1)][61.2%][w=833MiB/s][w=26 IOPS][eta 00m:47s]
+Jobs: 1 (f=1): [W(1)][66.1%][w=160MiB/s][w=5 IOPS][eta 00m:41s]
+Jobs: 1 (f=1): [W(1)][71.1%][w=64.0MiB/s][w=2 IOPS][eta 00m:35s]
+Jobs: 1 (f=1): [W(1)][76.0%][w=128MiB/s][w=4 IOPS][eta 00m:29s]
+Jobs: 1 (f=1): [W(1)][81.0%][w=64.1MiB/s][w=2 IOPS][eta 00m:23s]
+Jobs: 1 (f=1): [W(1)][86.0%][w=32.0MiB/s][w=1 IOPS][eta 00m:17s]
+Jobs: 1 (f=1): [W(1)][90.9%][w=2208MiB/s][w=69 IOPS][eta 00m:11s]
+Jobs: 1 (f=1): [W(1)][95.9%][w=1568MiB/s][w=49 IOPS][eta 00m:05s]
+Jobs: 1 (f=1): [W(1)][100.0%][w=2498MiB/s][w=78 IOPS][eta 00m:00s]
+iops-speed-test-job: (groupid=0, jobs=1): err= 0: pid=933058:
+  write: IOPS=13, BW=439MiB/s (461MB/s)(51.5GiB/120002msec); 0 zone resets
+    clat (msec): min=8, max=2301, avg=71.66, stdev=162.35
+     lat (msec): min=9, max=2303, avg=72.85, stdev=162.40
     clat percentiles (msec):
-     |  1.00th=[    3],  5.00th=[    4], 10.00th=[    4], 20.00th=[    4],
-     | 30.00th=[    4], 40.00th=[    4], 50.00th=[    4], 60.00th=[    5],
-     | 70.00th=[    5], 80.00th=[    7], 90.00th=[    9], 95.00th=[    9],
-     | 99.00th=[   11], 99.50th=[   23], 99.90th=[  810], 99.95th=[  810],
-     | 99.99th=[  835]
-   bw (  MiB/s): min=  128, max=17248, per=100.00%, avg=9000.77, stdev=1655.83, samples=808
-   iops        : min=    8, max= 1078, avg=562.55, stdev=103.49, samples=808
-  lat (msec)   : 4=54.78%, 10=43.92%, 20=0.80%, 50=0.02%, 100=0.01%
-  lat (msec)   : 250=0.01%, 500=0.02%, 750=0.03%, 1000=0.41%
-  cpu          : usr=0.10%, sys=99.75%, ctx=1351, majf=0, minf=16429
+     |  1.00th=[    9],  5.00th=[    9], 10.00th=[   10], 20.00th=[   10],
+     | 30.00th=[   11], 40.00th=[   11], 50.00th=[   16], 60.00th=[   21],
+     | 70.00th=[   56], 80.00th=[   80], 90.00th=[  155], 95.00th=[  330],
+     | 99.00th=[  793], 99.50th=[ 1099], 99.90th=[ 1938], 99.95th=[ 2299],
+     | 99.99th=[ 2299]
+   bw (  KiB/s): min=65536, max=3276800, per=100.00%, avg=509240.77, stdev=757052.72, samples=208
+   iops        : min=    2, max=  100, avg=15.53, stdev=23.09, samples=208
+  lat (msec)   : 10=27.44%, 20=32.54%, 50=6.80%, 100=18.34%, 250=7.95%
+  lat (msec)   : 500=4.37%, 750=1.46%, 1000=0.43%, 2000=0.61%, >=2000=0.06%
+  cpu          : usr=1.77%, sys=17.57%, ctx=164430, majf=0, minf=10
   IO depths    : 1=100.0%, 2=0.0%, 4=0.0%, 8=0.0%, 16=0.0%, 32=0.0%, >=64=0.0%
      submit    : 0=0.0%, 4=100.0%, 8=0.0%, 16=0.0%, 32=0.0%, 64=0.0%, >=64=0.0%
      complete  : 0=0.0%, 4=100.0%, 8=0.0%, 16=0.0%, 32=0.0%, 64=0.0%, >=64=0.0%
-     issued rwts: total=57036,0,0,0 short=0,0,0,0 dropped=0,0,0,0
+     issued rwts: total=0,1647,0,0 short=0,0,0,0 dropped=0,0,0,0
      latency   : target=0, window=0, percentile=100.00%, depth=1
 
 Run status group 0 (all jobs):
-   READ: bw=7604MiB/s (7974MB/s), 7604MiB/s-7604MiB/s (7974MB/s-7974MB/s), io=891GiB (957GB), run=120006-120006msec
+  WRITE: bw=439MiB/s (461MB/s), 439MiB/s-439MiB/s (461MB/s-461MB/s), io=51.5GiB (55.3GB), run=120002-120002msec
 ```
 
+ZFS ARC Cache on read:
 
-Sustainability:
+```bash
+# Large file (128m) on random read
+> fio --direct=1 --rw=randread --bs=128m --iodepth=1 --runtime=120 --numjobs=8 --time_based --group_reporting --name=iops-speed-test-job --size=1g --eta-newline=5
+iops-speed-test-job: (g=0): rw=randread, bs=(R) 128MiB-128MiB, (W) 128MiB-128MiB, (T) 128MiB-128MiB, ioengine=psync, iodepth=1
+...
+fio-3.33
+Starting 8 processes
+Jobs: 8 (f=8): [r(8)][5.8%][r=9728MiB/s][r=76 IOPS][eta 01m:54s]
+Jobs: 8 (f=8): [r(8)][10.7%][r=9984MiB/s][r=78 IOPS][eta 01m:48s]
+Jobs: 8 (f=8): [r(8)][15.7%][r=5766MiB/s][r=45 IOPS][eta 01m:42s]
+Jobs: 8 (f=8): [r(8)][20.7%][r=6278MiB/s][r=49 IOPS][eta 01m:36s]
+Jobs: 8 (f=8): [r(8)][25.6%][r=6278MiB/s][r=49 IOPS][eta 01m:30s]
+Jobs: 8 (f=8): [r(8)][30.6%][r=6144MiB/s][r=48 IOPS][eta 01m:24s]
+Jobs: 8 (f=8): [r(8)][35.5%][r=6663MiB/s][r=52 IOPS][eta 01m:18s]
+Jobs: 8 (f=8): [r(8)][40.5%][r=6663MiB/s][r=52 IOPS][eta 01m:12s]
+Jobs: 8 (f=8): [r(8)][45.5%][r=7560MiB/s][r=59 IOPS][eta 01m:06s]
+Jobs: 8 (f=8): [r(8)][50.4%][r=9344MiB/s][r=73 IOPS][eta 01m:00s]
+Jobs: 8 (f=8): [r(8)][55.8%][r=8832MiB/s][r=69 IOPS][eta 00m:53s]
+Jobs: 8 (f=8): [r(8)][60.3%][r=9472MiB/s][r=74 IOPS][eta 00m:48s]
+Jobs: 8 (f=8): [r(8)][65.3%][r=9600MiB/s][r=75 IOPS][eta 00m:42s]
+Jobs: 8 (f=8): [r(8)][70.2%][r=9610MiB/s][r=75 IOPS][eta 00m:36s]
+Jobs: 8 (f=8): [r(8)][75.2%][r=9481MiB/s][r=74 IOPS][eta 00m:30s]
+Jobs: 8 (f=8): [r(8)][80.2%][r=9738MiB/s][r=76 IOPS][eta 00m:24s]
+Jobs: 8 (f=8): [r(8)][85.1%][r=9856MiB/s][r=77 IOPS][eta 00m:18s]
+Jobs: 8 (f=8): [r(8)][90.1%][r=10.0GiB/s][r=80 IOPS][eta 00m:12s]
+Jobs: 8 (f=8): [r(8)][95.0%][r=10.3GiB/s][r=82 IOPS][eta 00m:06s]
+Jobs: 8 (f=8): [r(8)][100.0%][r=10.0GiB/s][r=80 IOPS][eta 00m:00s]
+iops-speed-test-job: (groupid=0, jobs=8): err= 0: pid=1182625: Mon Jun 26 13:44:18 2023
+  read: IOPS=67, BW=8658MiB/s (9078MB/s)(1015GiB/120082msec)
+    clat (msec): min=30, max=7698, avg=118.25, stdev=581.24
+     lat (msec): min=30, max=7698, avg=118.25, stdev=581.24
+    clat percentiles (msec):
+     |  1.00th=[   32],  5.00th=[   33], 10.00th=[   36], 20.00th=[   41],
+     | 30.00th=[   46], 40.00th=[   55], 50.00th=[   75], 60.00th=[   80],
+     | 70.00th=[   83], 80.00th=[   87], 90.00th=[  100], 95.00th=[  102],
+     | 99.00th=[  107], 99.50th=[ 6544], 99.90th=[ 6745], 99.95th=[ 7215],
+     | 99.99th=[ 7684]
+   bw (  MiB/s): min= 2048, max=21504, per=100.00%, avg=14738.69, stdev=642.94, samples=1122
+   iops        : min=   16, max=  168, avg=114.65, stdev= 5.08, samples=1122
+  lat (msec)   : 50=36.70%, 100=55.75%, 250=6.70%, 500=0.04%, 750=0.01%
+  lat (msec)   : >=2000=0.80%
+  cpu          : usr=0.02%, sys=99.28%, ctx=14764, majf=0, minf=262217
+  IO depths    : 1=100.0%, 2=0.0%, 4=0.0%, 8=0.0%, 16=0.0%, 32=0.0%, >=64=0.0%
+     submit    : 0=0.0%, 4=100.0%, 8=0.0%, 16=0.0%, 32=0.0%, 64=0.0%, >=64=0.0%
+     complete  : 0=0.0%, 4=100.0%, 8=0.0%, 16=0.0%, 32=0.0%, 64=0.0%, >=64=0.0%
+     issued rwts: total=8122,0,0,0 short=0,0,0,0 dropped=0,0,0,0
+     latency   : target=0, window=0, percentile=100.00%, depth=1
+
+Run status group 0 (all jobs):
+   READ: bw=8658MiB/s (9078MB/s), 8658MiB/s-8658MiB/s (9078MB/s-9078MB/s), io=1015GiB (1090GB), run=120082-120082msec
+```
+
+Observability and sustainability:
 
 ![](./pic/image27.jpeg)
 
@@ -245,7 +365,6 @@ Sustainability:
 
 ![](./pic/image30.png)
 
-<!-- TODO: CHANGEME TO NEXTDNS -->
 ![](./pic/image31.png)
 
 ![](./pic/image32.png)
