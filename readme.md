@@ -505,7 +505,7 @@ config:
 | RJ45 CAT6a                          | 1   | PLN 88    | PLN 88      | $21       |
 | SFF-8643 to 4xSata                  | 4   | PLN 45    | PLN 180     | $44       |
 | ----------------------------------- | --- | --------- | ----------- | --------- |
-|   Total total w/o Stage4.0          |     |           | PLN 28.628  | $6.932    |
+|   Total total (w/o Stage4.0)        |     |           | PLN 28.628  | $6.932    |
 ```
 
 ![](./pic/image57.png)
