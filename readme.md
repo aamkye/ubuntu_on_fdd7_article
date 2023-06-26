@@ -270,7 +270,9 @@ Benchmark results:
 
 _Two more things:_
 
-ZFS LOG Cache on write:
+ZFS LOG Cache on write (pay attention to the `w=...` values):
+
+```bash
 
 ```bash
 > fio \
@@ -334,7 +336,7 @@ Run status group 0 (all jobs):
   WRITE: bw=439MiB/s (461MB/s), 439MiB/s-439MiB/s (461MB/s-461MB/s), io=51.5GiB (55.3GB), run=120002-120002msec
 ```
 
-ZFS ARC Cache on read:
+ZFS ARC Cache on read (pay attention to the `r=...` values):
 
 ```bash
 # Large file (128m) on random read
