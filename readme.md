@@ -219,44 +219,44 @@ Benchmark results:
 
 | ZFS Pool Name | Test Type   | BS    | Speed (avg)     | IOPS (avg)  |
 | ------------- | ----------- | ----- | --------------- | ----------- |
-| `Cheetah`     | `write`     | `4k`  | `358.90 MiB/s`  | `89.72K`    |
-| `Cheetah`     | `write`     | `1m`  | `3.65 GiB/s`    | `3655`      |
-| `Cheetah`     | `write`     | `32m` | `2.75 GiB/s`    | `85`        |
-| `Cheetah`     | `randwrite` | `4k`  | `350.21 MiB/s`  | `58.54K`    |
-| `Cheetah`     | `randwrite` | `1m`  | `3.62 GiB/s`    | `3626`      |
-| `Cheetah`     | `randwrite` | `32m` | `2.85 GiB/s`    | `89`        |
-| `Cheetah`     | `read`      | `4k`  | `734.14 MiB/s`  | `183.53K`   |
-| `Cheetah`     | `read`      | `1m`  | `5.46 GiB/s`    | `5.46K`     |
-| `Cheetah`     | `read`      | `32m` | `4.54 GiB/s`    | `142`       |
-| `Cheetah`     | `randread`  | `4k`  | `592.61 MiB/s`  | `148.15K`   |
-| `Cheetah`     | `randread`  | `1m`  | `5.18 GiB/s`    | `5.18K`     |
-| `Cheetah`     | `randread`  | `32m` | `4.57 GiB/s`    | `143`       |
+| Cheetah       | write       | 4k    | 358.90 MiB/s    | 89.72K      |
+| Cheetah       | write       | 1m    | 3.65 GiB/s      | 3655        |
+| Cheetah       | write       | 32m   | 2.75 GiB/s      | 85          |
+| Cheetah       | randwrite   | 4k    | 350.21 MiB/s    | 58.54K      |
+| Cheetah       | randwrite   | 1m    | 3.62 GiB/s      | 3626        |
+| Cheetah       | randwrite   | 32m   | 2.85 GiB/s      | 89          |
+| Cheetah       | read        | 4k    | 734.14 MiB/s    | 183.53K     |
+| Cheetah       | read        | 1m    | 5.46 GiB/s      | 5.46K       |
+| Cheetah       | read        | 32m   | 4.54 GiB/s      | 142         |
+| Cheetah       | randread    | 4k    | 592.61 MiB/s    | 148.15K     |
+| Cheetah       | randread    | 1m    | 5.18 GiB/s      | 5.18K       |
+| Cheetah       | randread    | 32m   | 4.57 GiB/s      | 143         |
 | ------------- | ----------- | ----- | --------------- | ----------- |
-| `Elephant`    | `write`     | `4k`  | `335.33 MiB/s`  | `83.83K`    |
-| `Elephant`    | `write`     | `1m`  | `754.25 MiB/s`  | `736`       |
-| `Elephant`    | `write`     | `32m` | `671.65 MiB/s`  | `20`        |
-| `Elephant`    | `randwrite` | `4k`  | `302.10 MiB/s`  | `75.52K`    |
-| `Elephant`    | `randwrite` | `1m`  | `571.56 MiB/s`  | `558`       |
-| `Elephant`    | `randwrite` | `32m` | `745.84 MiB/s`  | `22`        |
-| `Elephant`    | `read`      | `4k`  | `718.03 MiB/s`  | `179.50K`   |
-| `Elephant`    | `read`      | `1m`  | `5.40 GiB/s`    | `5400`      |
-| `Elephant`    | `read`      | `32m` | `4.56 GiB/s`    | `142`       |
-| `Elephant`    | `randread`  | `4k`  | `596.53 MiB/s`  | `149.13K`   |
-| `Elephant`    | `randread`  | `1m`  | `5.13 GiB/s`    | `5133`      |
-| `Elephant`    | `randread`  | `32m` | `4.47 GiB/s`    | `139`       |
+| Elephant      | write       | 4k    | 335.33 MiB/s    | 83.83K      |
+| Elephant      | write       | 1m    | 754.25 MiB/s    | 736         |
+| Elephant      | write       | 32m   | 671.65 MiB/s    | 20          |
+| Elephant      | randwrite   | 4k    | 302.10 MiB/s    | 75.52K      |
+| Elephant      | randwrite   | 1m    | 571.56 MiB/s    | 558         |
+| Elephant      | randwrite   | 32m   | 745.84 MiB/s    | 22          |
+| Elephant      | read        | 4k    | 718.03 MiB/s    | 179.50K     |
+| Elephant      | read        | 1m    | 5.40 GiB/s      | 5400        |
+| Elephant      | read        | 32m   | 4.56 GiB/s      | 142         |
+| Elephant      | randread    | 4k    | 596.53 MiB/s    | 149.13K     |
+| Elephant      | randread    | 1m    | 5.13 GiB/s      | 5133        |
+| Elephant      | randread    | 32m   | 4.47 GiB/s      | 139         |
 | ------------- | ----------- | ----- | --------------- | ----------- |
-| `Tortoise`    | `write`     | `4k`  | `243.74 MiB/s`  | `60.93K`    |
-| `Tortoise`    | `write`     | `1m`  | `452.69 MiB/s`  | `442`       |
-| `Tortoise`    | `write`     | `32m` | `509.24 MiB/s`  | `15`        |
-| `Tortoise`    | `randwrite` | `4k`  | `224.53 MiB/s`  | `56.13K`    |
-| `Tortoise`    | `randwrite` | `1m`  | `475.20 MiB/s`  | `464`       |
-| `Tortoise`    | `randwrite` | `32m` | `581.77 MiB/s`  | `17`        |
-| `Tortoise`    | `read`      | `4k`  | `731.10 MiB/s`  | `182.77K`   |
-| `Tortoise`    | `read`      | `1m`  | `5.15 GiB/s`    | `5151`      |
-| `Tortoise`    | `read`      | `32m` | `4.53 GiB/s`    | `141`       |
-| `Tortoise`    | `randread`  | `4k`  | `570.39 MiB/s`  | `142.59K`   |
-| `Tortoise`    | `randread`  | `1m`  | `5.14 GiB/s`    | `5145`      |
-| `Tortoise`    | `randread`  | `32m` | `4.56 GiB/s`    | `142`       |
+| Tortoise      | write       | 4k    | 243.74 MiB/s    | 60.93K      |
+| Tortoise      | write       | 1m    | 452.69 MiB/s    | 442         |
+| Tortoise      | write       | 32m   | 509.24 MiB/s    | 15          |
+| Tortoise      | randwrite   | 4k    | 224.53 MiB/s    | 56.13K      |
+| Tortoise      | randwrite   | 1m    | 475.20 MiB/s    | 464         |
+| Tortoise      | randwrite   | 32m   | 581.77 MiB/s    | 17          |
+| Tortoise      | read        | 4k    | 731.10 MiB/s    | 182.77K     |
+| Tortoise      | read        | 1m    | 5.15 GiB/s      | 5151        |
+| Tortoise      | read        | 32m   | 4.53 GiB/s      | 141         |
+| Tortoise      | randread    | 4k    | 570.39 MiB/s    | 142.59K     |
+| Tortoise      | randread    | 1m    | 5.14 GiB/s      | 5145        |
+| Tortoise      | randread    | 32m   | 4.56 GiB/s      | 142         |
 
 _Two more things:_
 
