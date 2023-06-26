@@ -128,10 +128,10 @@ Size:
 
 ```bash
 zpool list
-NAME       SIZE  ALLOC   FREE  CKPOINT  EXPANDSZ   FRAG    CAP  DEDUP    HEALTH  ALTROOT
-cheetah   7.27T   825G  6.46T        -         -     0%    11%  1.00x    ONLINE  -
-elephant  58.2T  14.6T  43.6T        -         -     0%    25%  1.00x    ONLINE  -
-tortoise  14.5T   855G  13.7T        -         -    14%     5%  1.00x    ONLINE  -
+NAME       SIZE  ALLOC   FREE  CKPOINT  EXPANDSZ   FRAG    CAP  DEDUP    HEALTH
+cheetah   7.27T   825G  6.46T        -         -     0%    11%  1.00x    ONLINE
+elephant  58.2T  14.6T  43.6T        -         -     0%    25%  1.00x    ONLINE
+tortoise  14.5T   855G  13.7T        -         -    14%     5%  1.00x    ONLINE
 ```
 
 Reliability:
@@ -214,9 +214,20 @@ Benchmark results:
 
 ```bash
 # Small, medium, and large files (4k/1m/32m) on sequential and random read/write
-> fio --direct=1 --rw=[write|read|randwrite|randread] --bs=[4k|1m|32m] --iodepth=1 --runtime=120 --numjobs=1 --time_based --group_reporting --name=iops-speed-test-job --size=1g
+> fio \
+  --direct=1 \
+  --rw=[write|read|randwrite|randread] \
+  --bs=[4k|1m|32m] \
+  --iodepth=1 \
+  --runtime=120 \
+  --numjobs=1 \
+  --time_based \
+  --group_reporting \
+  --name=iops-speed-test-job \
+  --size=1g
 ```
 
+```
 | ZFS Pool Name | Test Type   | BS    | Speed (avg)     | IOPS (avg)  |
 | ------------- | ----------- | ----- | --------------- | ----------- |
 | Cheetah       | write       | 4k    | 358.90 MiB/s    | 89.72K      |
@@ -257,13 +268,26 @@ Benchmark results:
 | Tortoise      | randread    | 4k    | 570.39 MiB/s    | 142.59K     |
 | Tortoise      | randread    | 1m    | 5.14 GiB/s      | 5145        |
 | Tortoise      | randread    | 32m   | 4.56 GiB/s      | 142         |
+```
 
 _Two more things:_
 
 ZFS LOG Cache on write:
 
 ```bash
-> fio --direct=1 --rw=write --bs=32m --iodepth=1 --runtime=120 --numjobs=1 --time_based --group_reporting --name=iops-speed-test-job --size=1g --eta-newline=5
+> fio \
+  --direct=1 \
+  --rw=write \
+  --bs=32m \
+  --iodepth=1 \
+  --runtime=120 \
+  --numjobs=1 \
+  --time_based \
+  --group_reporting \
+  --name=iops-speed-test-job \
+  --size=1g \
+  --eta-newline=5
+
 iops-speed-test-job: (g=0): rw=write, bs=(R) 32.0MiB-32.0MiB, (W) 32.0MiB-32.0MiB, (T) 32.0MiB-32.0MiB, ioengine=psync, iodepth=1
 fio-3.33
 Starting 1 process
@@ -316,7 +340,19 @@ ZFS ARC Cache on read:
 
 ```bash
 # Large file (128m) on random read
-> fio --direct=1 --rw=randread --bs=128m --iodepth=1 --runtime=120 --numjobs=8 --time_based --group_reporting --name=iops-speed-test-job --size=1g --eta-newline=5
+> fio \
+  --direct=1 \
+  --rw=randread \
+  --bs=128m \
+  --iodepth=1 \
+  --runtime=120 \
+  --numjobs=8 \
+  --time_based \
+  --group_reporting \
+  --name=iops-speed-test-job \
+  --size=1g \
+  --eta-newline=5
+
 iops-speed-test-job: (g=0): rw=randread, bs=(R) 128MiB-128MiB, (W) 128MiB-128MiB, (T) 128MiB-128MiB, ioengine=psync, iodepth=1
 ...
 fio-3.33
@@ -383,10 +419,10 @@ config:
         NAME                                       STATE     READ WRITE CKSUM
         tortoise                                   DEGRADED     0     0     0
           raidz1-0                                 DEGRADED   498   572     0
-            SCSi-SATA_NDC_ND4003FFBX-6_V138JJBG    DEGRADED   383   233     0  too many errors
-            Scsi-SATA_WDC_WD4003FFBX-6_V1JAPH9G    DEGRADED   385   415     0  too many errors
-            SCSi-SATA_WDC_WD4003FFBX-6_V1JASWGG    DEGRADED   472   271     0  too many errors
-            scsi-SATA_WDC_WD4003FFBX-6_VBGJN8SF    ONLINE       0     0     0  (resilvering)
+            SCSi-SATA_NDC_ND4003FFBX-6_V138JJBG    DEGRADED   383   233     0
+            Scsi-SATA_WDC_WD4003FFBX-6_V1JAPH9G    ONLINE     385   415     0
+            SCSi-SATA_WDC_WD4003FFBX-6_V1JASWGG    ONLINE     472   271     0
+            scsi-SATA_WDC_WD4003FFBX-6_VBGJN8SF    ONLINE     412   342     0
         logs
           mirror-1                                 ONLINE       0     0     0
             nume-WD_Red_SN700_2000GB_23024R800705  ONLINE       0     0     0
@@ -431,6 +467,7 @@ config:
 
 ## Costs at my HomeLab
 
+```
 | Name                                | q.  | per ea.   | Cost PLN    | Cost USD  |
 | ----------------------------------- | --- | --------- | ----------- | --------- |
 |   Stage1 (ok):                      |     |           | PLN 10.800  | $2.615    |
@@ -470,7 +507,7 @@ config:
 | SFF-8643 to 4xSata                  | 4   | PLN 45    | PLN 180     | $44       |
 | ----------------------------------- | --- | --------- | ----------- | --------- |
 |   Total total                       |     |           | PLN 28.628  | $6.932    |
-
+```
 
 ![](./pic/image57.png)
 
