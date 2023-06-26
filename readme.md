@@ -225,9 +225,7 @@ Benchmark results:
   --group_reporting \
   --name=iops-speed-test-job \
   --size=1g
-```
 
-```
 | ZFS Pool Name | Test Type   | BS    | Speed (avg)     | IOPS (avg)  |
 | ------------- | ----------- | ----- | --------------- | ----------- |
 | Cheetah       | write       | 4k    | 358.90 MiB/s    | 89.72K      |
