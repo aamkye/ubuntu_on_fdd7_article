@@ -407,6 +407,7 @@ Observability and sustainability:
 ![](./pic/image27.jpeg)
 
 ```bash
+> zpool status
   pool: tortoise
  state: DEGRADED
 status: One or more devices is currently being resilvered. The pool will
