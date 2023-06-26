@@ -273,8 +273,6 @@ _Two more things:_
 ZFS LOG Cache on write (pay attention to the `w=...` values):
 
 ```bash
-
-```bash
 > fio \
   --direct=1 \
   --rw=write \
