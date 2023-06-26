@@ -1,6 +1,6 @@
 # HomeLab: How DevOps manage information and maintain high availability of the home infrastructure
 
-Get to know how DevOps compute, stores, preserves, presents, and plays with information and dat_but also maintains high availability of the home infrastructure using corporation-grade software and hardware
+Get to know how DevOps compute, stores, preserves, presents, and plays with information and dat_but also maintains high availability of the home infrastructure using corporation-grade software and hardware. test
 
 ## Introduction (Tale)
 
