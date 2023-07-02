@@ -1,6 +1,6 @@
 # HomeLab: How DevOps manage information and maintain high availability of the home infrastructure
 
-Get to know how DevOps compute, stores, preserves, presents, and plays with information and dat_but also maintains high availability of the home infrastructure using corporation-grade software and hardware
+Get to know how DevOps compute, stores, preserves, presents, and plays with information and data but also maintains high availability of the home infrastructure using corporation-grade software and hardware
 
 ## Introduction (Tale)
 
@@ -402,6 +402,8 @@ Run status group 0 (all jobs):
 
 Observability and sustainability:
 
+Even if one of the disks fails, the data is still available due to the redundancy of the RAIDZ1. The resilvering process will start automatically and the data will be restored to the original state.
+
 ![](./pic/image27.jpeg)
 
 ```
@@ -483,19 +485,19 @@ What is also worth to mention - the ISO images are skillfully crafted with a "pr
 
 Prepare yourself for an impressive ensemble of software that graces my HomeLab:
 
-- Ansible
-- Cert-manager
-- Deluge
-- Grafana
-- Helm
-- Jellyfin
-- K3s
-- Kubernetes (K8s)
-- Longhorn
-- OpenZFS
-- Prometheus
-- Time machine server
-- Ubuntu Server
+- [Ansible](https://github.com/ansible/ansible)
+- [Cert-manager](https://github.com/cert-manager/cert-manager)
+- [Deluge](https://github.com/deluge-torrent/deluge)
+- [Grafana](https://github.com/grafana/grafana)
+- [Helm](https://github.com/helm/helm)
+- [Jellyfin](https://github.com/jellyfin/jellyfin)
+- [K3s](https://github.com/k3s-io/k3s)
+- [Kubernetes (K8s)](https://github.com/kubernetes/kubernetes)
+- [Longhorn](https://github.com/longhorn/longhorn)
+- [OpenZFS](https://github.com/openzfs/zfs)
+- [Prometheus](https://github.com/prometheus/prometheus)
+- [TimeMachine server](https://github.com/mbentley/docker-timemachine)
+- [Ubuntu Server](https://ubuntu.com/)
 
 ## Monitoring at my HomeLab
 
