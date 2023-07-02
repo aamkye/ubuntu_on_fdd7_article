@@ -400,11 +400,29 @@ Run status group 0 (all jobs):
    READ: bw=8658MiB/s (9078MB/s), 8658MiB/s-8658MiB/s (9078MB/s-9078MB/s), io=1015GiB (1090GB), run=120082-120082msec
 ```
 
-Observability and sustainability:
+Observability:
 
-Even if one of the disks fails, the data is still available due to the redundancy of the RAIDZ1. The resilvering process will start automatically and the data will be restored to the original state.
+Being well-informed about the state of your system is critical to maintaining its health. So any information that can be gleaned from the system is valuable. The more observability you have, the better.
 
 ![](./pic/image27.jpeg)
+
+Sustainability:
+
+Imagine you're the captain of the Data Defender spaceship, soaring through the digital galaxy. Your crew of heroic disks stands united, ready to face any peril that comes their way. But alas! Amid your interstellar journey, disaster strikes! One of your loyal disks malfunctions and cries out, "Houston, we have a problem!"
+
+Fear not, intrepid captain! The Data Defender is equipped with the legendary RAIDZ1, a shield of redundancy that will keep your data safe and sound. It's like having a team of cosmic superheroes at your command.
+
+As soon as the distress signal is detected, your trusty crew leaps into action. They diligently diagnose the issue, like brilliant space engineers on a mission. Once they identify the culprit, it's time to bring in the reinforcements.
+
+With the faulty disk replaced by a shiny new recruit, the resilvering process commences. It's like a cosmic restoration as if the universe itself is working its magic. Bit by bit, byte by byte, the missing data is reconstructed and woven back into the fabric of your digital universe.
+
+The Data Defender crew works tirelessly, their laser-like focus ensuring that every precious fragment of information finds its rightful place. It's a celestial ballet of data, a symphony of technological wizardry.
+
+And lo and behold, in the blink of an eye, your data is resurrected! It returns to its former glory, ready to continue its cosmic adventure. The crew celebrates this triumph, high-fiving and exchanging virtual fist bumps in zero gravity.
+
+So, brave captain, fear not the cosmic glitches and digital hiccups. With RAIDZ1 guarding your data, even the mightiest of failures won't thwart your mission. The resilvering process is the elixir of restoration, bringing your precious information back from the brink.
+
+Remember, in the vast expanse of the digital universe, RAIDZ1 shines as a beacon of resilience, ensuring that your data journey never comes to a premature end. Onward, intrepid explorer, with RAIDZ1 as your loyal companion!
 
 ```
 > zpool status tortoise
@@ -459,11 +477,17 @@ The underlying principles are elegantly straightforward: maintain local DNS reso
 
 The conundrum of multiple Wi-Fi networks and signal dropout is a nuisance nobody relishes. To mitigate this predicament, I opted for a TP-Link mesh system featuring a unified SSID for both the 2.4GHz and 5GHz networks across three mesh devices. Consequently, I can freely wander throughout my abode without encountering any connectivity hindrances.
 
+Now, as you might already spotted on the docs, here's the dealio, folks. The key to maintaining peace and harmony in the technological realm is to have not one, but two Wi-Fi networks. Oh yeah, we're living the high life now! The first one is exclusively for all those fancy-schmancy IoT devices, because, you know, they've got a party of their own going on. They're out there sharing cat memes and discussing the latest smart home gossip, while I'm just chilling on the sidelines.
+
+But hold your horses, folks! We can't forget about the second network, designed especially for my dear wife. Why, you ask? Well, let me spill the beans. You see, I have a particular talent for accidentally breaking stuff. It's like my superpower or something. But fear not! With this second Wi-Fi network in place, my wife can still surf the web, browse her favorite websites, and watch adorable puppy videos, all while I'm over here causing havoc like a clumsy ninja.
+
+In the end, my friends, it's all about preserving domestic tranquility in the face of technological mishaps. So, let's raise a glass to the two Wi-Fi networks because they're the real MVPs of our connected household. Cheers to endless internet for everyone, even when I'm on a rampage of destruction!
+
 ![](./pic/image32.png)
 
-Ah, my personal favorite — VPN. Have you ever experienced the peculiar scenario of toiling away at a company for X years, while the esteemed Security department assumes you're diligently working from country Y, only to be abruptly confronted with a malfunctioning VPN server that "teleports" you back to your original country, Z? The inevitable phone call from said Security department ensues, bewildered by your sudden appearance in country Z. If you answered in the affirmative, rest assured, you're doing it right!
+Ah, my personal favorite — VPN. Have you ever experienced the peculiar scenario of toiling away at a company for X years, while the esteemed security department assumes you're diligently working from country Y, only to be abruptly confronted with a malfunctioning VPN server that "teleports" you back to your original country, Z? The inevitable phone call from said security department ensues, bewildered by your sudden appearance in country Z. If you answered in the affirmative, rest assured, you're doing it right!
 
-Every single device within my network must traverse the router, which boasts a meticulously configured VPN client. This meticulous setup guarantees that all my device traffic remains enciphered, safeguarding against any data leakage to the vast expanse of the Internet.
+Every single device within my network must traverse the router, which boasts a meticulously configured VPN client. This meticulous setup guarantees that all my device traffic remains enciphered, safeguarding against any data leakage to the vast expanse of the Internet (well, at least until it reaches the VPN server, but that's a whole other story.)
 
 ![](./pic/image33.png)
 
@@ -479,7 +503,7 @@ Ah, but hold your breath for the delightful surprise! In this setup, all the dis
 
 ![](./pic/image37.jpeg)
 
-What is also worth to mention - the ISO images are skillfully crafted with a "pre-generated" seed file, housing essential information about virtual machines (VMs). This ingenious approach enables a seamless, automated installation process, rendering it entirely unattended.
+What is also worth mentioning - [cloudymax/pxeless](https://github.com/cloudymax/pxeless) - the automation tool for the ISO images to skillfully recraft them with a "pre-generated" seed file, housing essential information about virtual machines (VMs). This ingenious approach enables a seamless, automated installation process, rendering it entirely unattended.
 
 ## VM & K8s software at my HomeLab
 
@@ -500,6 +524,8 @@ Prepare yourself for an impressive ensemble of software that graces my HomeLab:
 - [Ubuntu Server](https://ubuntu.com/)
 
 ## Monitoring at my HomeLab
+
+As I already said: _"The more observability you have, the better"_.
 
 Centralized hardware monitoring:
 
