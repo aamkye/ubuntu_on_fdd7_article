@@ -126,7 +126,7 @@ We add all together, do some cable management, and _voilà_.
 
 Size:
 
-```bash
+```
 zpool list
 NAME       SIZE  ALLOC   FREE  CKPOINT  EXPANDSZ   FRAG    CAP  DEDUP    HEALTH
 cheetah   7.27T   825G  6.46T        -         -     0%    11%  1.00x    ONLINE
@@ -136,7 +136,7 @@ tortoise  14.5T   855G  13.7T        -         -    14%     5%  1.00x    ONLINE
 
 Reliability:
 
-```bash
+```
 zpool status
   pool: cheetah
  state: ONLINE
@@ -191,7 +191,7 @@ errors: No known data errors
 
 Speed:
 
-```bash
+```
 ...
 PS2/Games/Age Of Empires 2.iso
     634,811,856 100% 321.85MB/s     0:00:01 (xfr#33, ir-chk-2720/2780)
@@ -212,7 +212,7 @@ PS2/Games/Devil May Cry.iso
 
 Benchmark results:
 
-```bash
+```
 # Small, medium, and large files (4k/1m/32m) on sequential and random read/write
 > fio \
   --direct=1 \
@@ -225,6 +225,7 @@ Benchmark results:
   --group_reporting \
   --name=iops-speed-test-job \
   --size=1g
+```
 
 | ZFS Pool Name | Test Type   | BS    | Speed (avg)     | IOPS (avg)  |
 | ------------- | ----------- | ----- | --------------- | ----------- |
@@ -266,13 +267,12 @@ Benchmark results:
 | Tortoise      | randread    | 4k    | 570.39 MiB/s    | 142.59K     |
 | Tortoise      | randread    | 1m    | 5.14 GiB/s      | 5145        |
 | Tortoise      | randread    | 32m   | 4.56 GiB/s      | 142         |
-```
 
 _Two more things:_
 
 ZFS LOG Cache on write (pay attention to the `w=...` values):
 
-```bash
+```
 > fio \
   --direct=1 \
   --rw=write \
@@ -336,7 +336,7 @@ Run status group 0 (all jobs):
 
 ZFS ARC Cache on read (pay attention to the `r=...` values):
 
-```bash
+```
 # Large file (128m) on random read
 > fio \
   --direct=1 \
@@ -404,7 +404,7 @@ Observability and sustainability:
 
 ![](./pic/image27.jpeg)
 
-```bash
+```
 > zpool status tortoise
   pool: tortoise
  state: DEGRADED
@@ -430,17 +430,38 @@ config:
 
 ## Documentation at my HomeLab
 
+In the context of this project, it is imperative to possess graphical documentation. Therefore, I have opted for the utilization of [draw.io](https://draw.io/) for this purpose.
+
 ![](./pic/image28.png)
+
+Commencing from the selection of the provider, outbound connections, the establishment of a legend, depiction of data flows, network segregation, the configuration of the mesh, software functionalities, identification of unoccupied RJ45 slots, consideration of future software requirements, and specification of network hardware.
 
 ![](./pic/image29.png)
 
+Additionally, it involves the creation of a connection diagram, representation of the docking station, specification of the server, specification of virtual machines (VMs) and Kubernetes (K8s) deployments, as well as the ZFS diagram illustrating the disk architecture.
+
+These measures are crucial to ensure future reference and to prevent any confusion or loss of information.
+
 ## Networking at my HomeLab
+
+Here, without a surprise, OpenWRT - maximum flexibility and control, minimum requirements.
 
 ![](./pic/image30.png)
 
+AdBlock? Pfft, so yesterday! PiHole? Meh, too basic! AdGuard? Yawn, too mainstream! But network-wide ad blocking with OpenWRT? Oh heck yeah, sign me up for some Wi-Fi wizardry and ad annihilation!
+
+
+The underlying principles are elegantly straightforward: maintain local DNS resolution while redirecting all non-local DNS queries to an external DNS resolver such as [NextDNS](https://nextdns.io). By employing this method, you can leverage your local DNS resolver while simultaneously reaping the benefits of network-wide ad blocking.
+
 ![](./pic/image31.png)
 
+The conundrum of multiple Wi-Fi networks and signal dropout is a nuisance nobody relishes. To mitigate this predicament, I opted for a TP-Link mesh system featuring a unified SSID for both the 2.4GHz and 5GHz networks across three mesh devices. Consequently, I can freely wander throughout my abode without encountering any connectivity hindrances.
+
 ![](./pic/image32.png)
+
+Ah, my personal favorite — VPN. Have you ever experienced the peculiar scenario of toiling away at a company for X years, while the esteemed Security department assumes you're diligently working from country Y, only to be abruptly confronted with a malfunctioning VPN server that "teleports" you back to your original country, Z? The inevitable phone call from said Security department ensues, bewildered by your sudden appearance in country Z. If you answered in the affirmative, rest assured, you're doing it right!
+
+Every single device within my network must traverse the router, which boasts a meticulously configured VPN client. This meticulous setup guarantees that all my device traffic remains enciphered, safeguarding against any data leakage to the vast expanse of the Internet.
 
 ![](./pic/image33.png)
 
@@ -448,25 +469,58 @@ config:
 
 ![](./pic/image35.png)
 
+Once again, enter the stage with a drumroll — Proxmox! No surprises here, as this robust virtualization platform reigns supreme.
+
+![](./pic/image36.png)
+
+Ah, but hold your breath for the delightful surprise! In this setup, all the disks and GPU are magnificently passed through to the main VM, ushering in a virtualization extravaganza like no other. The power and potential of Proxmox coupled with this remarkable feature truly take the virtualization game to new heights!
+
+![](./pic/image37.jpeg)
+
+What is also worth to mention - the ISO images are skillfully crafted with a "pre-generated" seed file, housing essential information about virtual machines (VMs). This ingenious approach enables a seamless, automated installation process, rendering it entirely unattended.
+
 ## VM & K8s software at my HomeLab
 
-<!-- TODO: Add software list -->
+Prepare yourself for an impressive ensemble of software that graces my HomeLab:
+
+- Ansible
+- Cert-manager
+- Deluge
+- Grafana
+- Helm
+- Jellyfin
+- K3s
+- Kubernetes (K8s)
+- Longhorn
+- OpenZFS
+- Prometheus
+- Time machine server
+- Ubuntu Server
 
 ## Monitoring at my HomeLab
 
+Centralized hardware monitoring:
+
 ![](./pic/image51.png)
 
+Centralized S.M.A.R.T. monitoring:
+
 ![](./pic/image52.png)
+
+Centralized ZFS-usage monitoring:
 
 ![](./pic/image53.png)
 
 ## Weather at my HomeLab
 
+Hold on to your socks, because I'm about to blow your mind! You know how we can keep an eye on our CPU temperature, right? Well, guess what? It turns out we can also tap into the mystical powers of weather monitoring! That's right, folks, I've got a full-fledged weather station right here in my HomeLab. I can predict rain, wind, and even the occasional sneeze from Mother Nature herself, all from the comfort of my high-tech haven. I've officially become the geeky weatherman of my own little tech kingdom!
+
 ![](./pic/image54.jpeg)
 
 ## Costs at my HomeLab
 
-```
+Ah, now let's delve into some vital details for all you tech-savvy individuals yearning to embark on a similar HomeLab endeavor - costs.
+
 | Name                                | q.  | per ea.   | Cost PLN    | Cost USD  |
 | ----------------------------------- | --- | --------- | ----------- | --------- |
 |   Stage1 (ok):                      |     |           | PLN 10.800  | $2.615    |
@@ -506,10 +560,13 @@ config:
 | SFF-8643 to 4xSata                  | 4   | PLN 45    | PLN 180     | $44       |
 | ----------------------------------- | --- | --------- | ----------- | --------- |
 |   Total total (w/o Stage4.0)        |     |           | PLN 28.628  | $6.932    |
-```
+
+Ah, indeed, we cannot overlook the power consumption of such a magnificent beast!
 
 ![](./pic/image57.png)
 
-## It's never enough
+## It's never enough...
+
+However, to be perfectly honest, the achievements I have accomplished are truly remarkable, and the knowledge I have acquired throughout this process is commendable. I take immense pride in my accomplishments thus far. Nonetheless, I am cognizant of the fact that there is always room for improvement and continuous growth. Consequently, I have already begun contemplating the subsequent phases or endeavors that lie ahead, as I perpetually strive to expand my horizons and advance further in my journey.
 
 ![](./pic/image58.png)
