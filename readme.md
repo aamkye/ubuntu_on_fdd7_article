@@ -88,7 +88,7 @@ After months of research, comparing hardware, counting my savings, and taking a 
 
 ![](./pic/image12.png)
 
-## Hardware at my HomeLab
+## My HomeLab Hardware
 
 Fractal Design Define 7 XL is a big case, and a big case means lots of space, and a lot of space needs a lot of pressure to move air through so my choice here was 8x 120mm and 1x 140mm Be Quiet! Silent Wings Pro 4 PWM fans:
 
