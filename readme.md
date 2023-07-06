@@ -40,7 +40,7 @@ Merge the previous images, and witness the birth of a typical Reddit-esque HomeL
 
 \- "See here! Raspberry Pi, NAS devices, external disks, old PCs, and old laptops, all are linked together by the almighty TrueNAS-ish software. My storage now thrives under a unified SMB share. It's a triumph!"
 
-### "The Dawn of the Small Rack"
+### "The Dawn of the Small Server Rack"
 
 Yet, in this tale, a crucial question arises: "Is this enough for me?" Alas, the answer tends to be a resounding "no." Thus begins the true HomeLab, where enthusiasts acquire old (and sometimes new) server relics, and wield their magical powers:
 
@@ -48,7 +48,7 @@ Yet, in this tale, a crucial question arises: "Is this enough for me?" Alas, the
 
 \- "This shall suffice! Let the enchantment begin!"
 
-### The Era of the Grand Rack (The Final HomeLab Stage)
+### The Era of the Grand Server Rack (The Final HomeLab Stage)
 
 However, as time marches on, their HomeLab transforms into a behemoth, and desperate pleas echo through the halls of Reddit:
 
