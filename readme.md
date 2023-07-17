@@ -60,9 +60,9 @@ However, as time marches on, their HomeLab transforms into a behemoth, and despe
 
 For now, end of the tale. Let's face facts and real examples of history.
 
-My journey began with a straightforward upgrade from a 250 GB HDD to a WD MyBook 1TB hard drive. However, it quickly became apparent that the storage space was still insufficient. In search of a solution, I stumbled upon two valuable resources: r/DataHoarder and r/HomeLab. After immersing myself in countless articles and delving into the subreddits' Wiki pages, I gained the necessary knowledge.
+My journey began with a straightforward upgrade from a 250 GB HDD to a WD MyBook 1 TB hard drive. However, it quickly became apparent that the storage space was still insufficient. In search of a solution, I stumbled upon two valuable resources: r/DataHoarder and r/HomeLab. After immersing myself in countless articles and delving into the subreddits' Wiki pages, I gained the necessary knowledge.
 
-My initial choice was the WD PR4100, a relatively straightforward option. I equipped it with four 4TB WD RED HDDs and configured it in a JBOD setup. However, my further research on those subreddits revealed that this setup lacked redundancy protections. To address this, I educated myself on RAID levels and the distinctions between hardware and software RAIDs. This led me to the ZFS project—a software RAID solution. Initially, it seemed impossible to install ZFS without modifying the hardware. To seek answers, I turned to the WD forums and discovered an alternative—installing a different OS than WD CloudOS. I opted for Ubuntu Server and, after a few days of working with Ansible and KVM, achieved success:
+My initial choice was the WD PR4100, a relatively straightforward option. I equipped it with four 4 TB WD RED HDDs and configured it in a JBOD setup. However, my further research on those subreddits revealed that this setup lacked redundancy protections. To address this, I educated myself on RAID levels and the distinctions between hardware and software RAIDs. This led me to the ZFS project—a software RAID solution. Initially, it seemed impossible to install ZFS without modifying the hardware. To seek answers, I turned to the WD forums and discovered an alternative—installing a different OS than WD CloudOS. I opted for Ubuntu Server and, after a few days of working with Ansible and KVM, achieved success:
 
 ![](./pic/image7.jpeg)
 
@@ -574,11 +574,11 @@ Ah, now let's delve into some vital details for all you tech-savvy individuals y
 | ----------------------------------- | --- | --------- | ----------- | --------- |
 |   Stage3.2 (ok):                    |     |           | PLN 6.325   | $1.532    |
 | QM2-4P-384                          | 1   | PLN 683   | PLN 683     | $165      |
-| WD RED SN700 2TB                    | 4   | PLN 764   | PLN 3.057   | $740      |
-| WD Ultrastar 16TB                   | 2   | PLN 1.293 | PLN 2.585   | $626      |
+| WD RED SN700 2 TB                    | 4   | PLN 764   | PLN 3.057   | $740      |
+| WD Ultrastar 16 TB                   | 2   | PLN 1.293 | PLN 2.585   | $626      |
 | ----------------------------------- | --- | --------- | ----------- | --------- |
 |   Stage4.0 (in-progress)            |     |           | PLN 10.341  | $2.504    |
-| WD Ultrastar 16TB                   | 8   | PLN 1.293 | PLN 10.341  | $2.504    |
+| WD Ultrastar 16 TB                   | 8   | PLN 1.293 | PLN 10.341  | $2.504    |
 | ----------------------------------- | --- | --------- | ----------- | --------- |
 |   Perfs (ok):                       |     |           | PLN 578     | $140      |
 | Thermal Paste                       | 1   | PLN 100   | PLN 100     | $24       |
