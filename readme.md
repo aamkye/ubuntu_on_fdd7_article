@@ -598,3 +598,6 @@ Ah, indeed, we cannot overlook the power consumption of such a magnificent beast
 However, to be perfectly honest, the achievements I have accomplished are truly remarkable, and the knowledge I have acquired throughout this process is commendable. I take immense pride in my accomplishments thus far. Nonetheless, I am cognizant of the fact that there is always room for improvement and continuous growth. Consequently, I have already begun contemplating the subsequent phases or endeavors that lie ahead, as I perpetually strive to expand my horizons and advance further in my journey.
 
 ![](./pic/image58.png)
+## Summary
+
+If you're considering building your own Homelab, I'm keeping my fingers crossed, since I know from my own experience that this idea marks the beginning of an exciting path. Homelab is something that allows you to grow, gain knowledge, learn from your missteps and look for new possibilities. If you would like to create your own homelab, it will certainly bring you a lot of joy. Sometimes it will give you sleepless nights, such as when you think about how to keep your environment harmonious, how to monitor it and ensure the right conditions, how to optimize it, and finally, constantly improve it. In other words, how to be DevOps in your own home.    
