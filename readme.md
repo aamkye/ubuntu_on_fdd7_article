@@ -21,6 +21,7 @@ But enough reminiscing, let us venture back to where it all began, where my tale
 Every self-proclaimed "data enthusiast" embarks on their grand adventure with a humble image and a relatable comment:
 
 ![](./pic/image1.png)
+[Source](https://www.ecgprod.com/importance-san-storage-video/)
 
 \- "Look at this chaos! External disks are scattered everywhere. I must gather all this storage into one central haven."
 
@@ -37,6 +38,7 @@ For those who venture further into the realm of HomeLabs, especially the tech-sa
 Merge the previous images, and witness the birth of a typical Reddit-esque HomeLab, providing solutions to 90% of their troubles:
 
 ![](./pic/image3.png)
+[Source](https://www.reddit.com/r/homelab/comments/13i0ttj/my_mini_homelab_xenserver_iscsi_dedicated_network/)
 
 \- "See here! Raspberry Pi, NAS devices, external disks, old PCs, and old laptops, all are linked together by the almighty TrueNAS-ish software. My storage now thrives under a unified SMB share. It's a triumph!"
 
@@ -45,6 +47,7 @@ Merge the previous images, and witness the birth of a typical Reddit-esque HomeL
 Yet, in this tale, a crucial question arises: "Is this enough for me?" Alas, the answer tends to be a resounding "no." Thus begins the true HomeLab, where enthusiasts acquire old (and sometimes new) server relics, and wield their magical powers:
 
 ![](./pic/image4.jpeg)
+[Source](https://www.reddit.com/r/homelab/comments/w8zg22/my_new_ibm_27648t_flash_array/)
 
 \- "This shall suffice! Let the enchantment begin!"
 
@@ -53,6 +56,7 @@ Yet, in this tale, a crucial question arises: "Is this enough for me?" Alas, the
 However, as time marches on, their HomeLab transforms into a behemoth, and desperate pleas echo through the halls of Reddit:
 
 ![](./pic/image5.jpg)
+[Source](https://www.reddit.com/r/homelab/comments/j8p5hd/finally_completed_server_rack/)
 
 \- "How do I escape this labyrinth? My HomeLab has consumed all available space. I must find a larger abode!"
 
@@ -65,12 +69,14 @@ My journey began with a straightforward upgrade from a 250 GB HDD to a WD MyBook
 My initial choice was the WD PR4100, a relatively straightforward option. I equipped it with four 4 TB WD RED HDDs and configured it in a JBOD setup. However, my further research on those subreddits revealed that this setup lacked redundancy protections. To address this, I educated myself on RAID levels and the distinctions between hardware and software RAIDs. This led me to the ZFS project—a software RAID solution. Initially, it seemed impossible to install ZFS without modifying the hardware. To seek answers, I turned to the WD forums and discovered an alternative—installing a different OS than WD CloudOS. I opted for Ubuntu Server and, after a few days of working with Ansible and KVM, achieved success:
 
 ![](./pic/image7.jpeg)
+[Source](https://www.digitaltrends.com/computing/wd-pr4100-nas-review/)
 
 But the story didn't end there. Although I managed to install ZFS on Ubuntu Server, I couldn't use it as a boot drive. Consequently, I had to install it on a USB drive. Unfortunately, this decision proved to be a significant mistake as the USB drive became corrupted after a few months, rendering my NAS unbootable. Thankfully, I had automated the reinstallation process using Ansible.
 
 Next, I explored the possibility of installing a lightweight variation of Kubernetes called K3s on my NAS. While the installation was successful, K3s immediately consumed a significant portion of the CPU time (80%) and RAM (90%). Considering the NAS had only 4 GB of RAM, an Intel Pentium N3710 processor, and the OS running from a USB drive, I had to abandon this idea. However, my pursuit continued, and after further research, I came across the concept of a "small business NAS" from HPE — the HPE ProLiant MicroServer Gen10.
 
 ![](./pic/image9.jpeg)
+[Source](https://vbrainstorm.com/hpe-intros-new-proliant-microserver-gen10-steps-backwards/)
 
 It proved to be an ideal solution for my requirements, offering four 3.5" HDD bays, one 2.5" SSD bay (sold separately), 8 GB of RAM, and an AMD Opteron X3216 processor. I purchased it second-hand, installed Ubuntu Server, and began migrating my data from the WD PR4100 by gradually replacing the disks. The end result was this tower configuration:
 
@@ -79,6 +85,7 @@ It proved to be an ideal solution for my requirements, offering four 3.5" HDD ba
 However, I soon realized that the 8 GB of RAM was not sufficient to run any workloads on the Kubernetes (K8s) cluster, such as Prometheus, Grafana, and others. Therefore, an additional upgrade was necessary to meet my requirements.
 
 ![](./pic/image11.gif)
+[Source](https://tenor.com/view/excited-more-power-baby-donut-media-james-humphrey-gif-17591305)
 
 ## My current HomeLab
 
@@ -87,6 +94,7 @@ Now without (reasonable) compromises.
 After months of research, comparing hardware, counting my savings, and taking a small inspiration from [here](https://www.youtube.com/watch?v=FAy9N1vX76o), I've finally decided to build this monster:
 
 ![](./pic/image12.png)
+[Source](https://www.fractal-design.com/products/cases/define/define-7-xl/black-tg-dark-tint/)
 
 ## My HomeLab Hardware
 
@@ -104,7 +112,8 @@ A powerful CPU requires powerful cooling, so I've chosen BeQuiet DarkRock Pro 4.
 
 A lot of desired storage requires a lot of SATA ports, so I've chosen LSI 9400-16i HBA card with 4x SFF-8643 ports:
 
-![](./pic/image17.png)
+![](./pic/image17.jpg)
+[Source](https://www.newegg.com/lsi-sas-9400-16i/p/N82E16816118273R)
 
 And a lot of SATA ports require a lot of cables, so I've chosen 4x SFF-8643 to SATA3 cables
 
@@ -484,6 +493,7 @@ But hold your horses, folks! We can't forget about the second network, designed 
 In the end, my friends, it's all about preserving domestic tranquility in the face of technological mishaps. So, let's raise a glass to the two Wi-Fi networks because they're the real MVPs of our connected household. Cheers to endless internet for everyone, even when I'm on a rampage of destruction!
 
 ![](./pic/image32.png)
+[Source](https://www.techadvisor.com/article/721027/tp-link-deco-p9-review.html)
 
 Ah, my personal favorite — VPN. Have you ever experienced the peculiar scenario of toiling away at a company for X years, while the esteemed security department assumes you're diligently working from country Y, only to be abruptly confronted with a malfunctioning VPN server that "teleports" you back to your original country, Z? The inevitable phone call from said security department ensues, bewildered by your sudden appearance in country Z. If you answered in the affirmative, rest assured, you're doing it right!
 
@@ -557,7 +567,7 @@ Ah, now let's delve into some vital details for all you tech-savvy individuals y
 | Xeon E5-2699v4                      | 1   | PLN 1.250 | PLN 1.250   | $303      |
 | Radeon PRO WX7100                   | 1   | PLN 900   | PLN 900     | $218      |
 | BeQuiet Dark Power Pro 12 1500W     | 1   | PLN 1.700 | PLN 1.700   | $412      |
-| Hynix 32 GB RDDIM DDR4               | 8   | PLN 275   | PLN 2.200  | $533      |
+| Hynix 32 GB RDDIM DDR4              | 8   | PLN 275   | PLN 2.200   | $533      |
 | BeQuiet Dark Rock Pro 4             | 1   | PLN 400   | PLN 400     | $97       |
 | BeQuiet Silent Wings Pro 4 140MM    | 1   | PLN 150   | PLN 150     | $36       |
 | BeQuiet Silent Wings Pro 4 120MM    | 8   | PLN 150   | PLN 1.200   | $291      |
@@ -574,11 +584,11 @@ Ah, now let's delve into some vital details for all you tech-savvy individuals y
 | ----------------------------------- | --- | --------- | ----------- | --------- |
 |   Stage3.2 (ok):                    |     |           | PLN 6.325   | $1.532    |
 | QM2-4P-384                          | 1   | PLN 683   | PLN 683     | $165      |
-| WD RED SN700 2 TB                    | 4   | PLN 764   | PLN 3.057   | $740      |
-| WD Ultrastar 16 TB                   | 2   | PLN 1.293 | PLN 2.585   | $626      |
+| WD RED SN700 2 TB                   | 4   | PLN 764   | PLN 3.057   | $740      |
+| WD Ultrastar 16 TB                  | 2   | PLN 1.293 | PLN 2.585   | $626      |
 | ----------------------------------- | --- | --------- | ----------- | --------- |
 |   Stage4.0 (in-progress)            |     |           | PLN 10.341  | $2.504    |
-| WD Ultrastar 16 TB                   | 8   | PLN 1.293 | PLN 10.341  | $2.504    |
+| WD Ultrastar 16 TB                  | 8   | PLN 1.293 | PLN 10.341  | $2.504    |
 | ----------------------------------- | --- | --------- | ----------- | --------- |
 |   Perfs (ok):                       |     |           | PLN 578     | $140      |
 | Thermal Paste                       | 1   | PLN 100   | PLN 100     | $24       |
@@ -597,7 +607,8 @@ Ah, indeed, we cannot overlook the power consumption of such a magnificent beast
 
 However, to be perfectly honest, the achievements I have accomplished are truly remarkable, and the knowledge I have acquired throughout this process is commendable. I take immense pride in my accomplishments thus far. Nonetheless, I am cognizant of the fact that there is always room for improvement and continuous growth. Consequently, I have already begun contemplating the subsequent phases or endeavors that lie ahead, as I perpetually strive to expand my horizons and advance further in my journey.
 
-![](./pic/image58.png)
+![](./pic/image58.jpg)
+[Source](https://www.servethehome.com/amd-ryzen-threadripper-pro-5995wx-wepyc-review-supermicro-gigabyte-kioxia-pny-nvidia-asus-lenovo/)
 ## Summary
 
-If you're considering building your own Homelab, I'm keeping my fingers crossed, since I know from my own experience that this idea marks the beginning of an exciting path. Homelab is something that allows you to grow, gain knowledge, learn from your missteps and look for new possibilities. If you would like to create your own homelab, it will certainly bring you a lot of joy. Sometimes it will give you sleepless nights, such as when you think about how to keep your environment harmonious, how to monitor it and ensure the right conditions, how to optimize it, and finally, constantly improve it. In other words, how to be DevOps in your own home.    
+If you're considering building your own Homelab, I'm keeping my fingers crossed, since I know from my own experience that this idea marks the beginning of an exciting path. Homelab is something that allows you to grow, gain knowledge, learn from your missteps and look for new possibilities. If you would like to create your own homelab, it will certainly bring you a lot of joy. Sometimes it will give you sleepless nights, such as when you think about how to keep your environment harmonious, how to monitor it and ensure the right conditions, how to optimize it, and finally, constantly improve it. In other words, how to be DevOps in your own home.
