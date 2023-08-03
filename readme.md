@@ -495,6 +495,8 @@ In the end, my friends, it's all about preserving domestic tranquility in the fa
 ![](./pic/image32.png)
 [Source](https://www.techadvisor.com/article/721027/tp-link-deco-p9-review.html)
 
+https://oiot.pl/wp-content/uploads/2020/10/recenzja-tp-link-deco-m4-oiot-09.jpg 
+
 Ah, my personal favorite — VPN. Have you ever experienced the peculiar scenario of toiling away at a company for X years, while the esteemed security department assumes you're diligently working from country Y, only to be abruptly confronted with a malfunctioning VPN server that "teleports" you back to your original country, Z? The inevitable phone call from said security department ensues, bewildered by your sudden appearance in country Z. If you answered in the affirmative, rest assured, you're doing it right!
 
 Every single device within my network must traverse the router, which boasts a meticulously configured VPN client. This meticulous setup guarantees that all my device traffic remains enciphered, safeguarding against any data leakage to the vast expanse of the Internet (well, at least until it reaches the VPN server, but that's a whole other story.)
