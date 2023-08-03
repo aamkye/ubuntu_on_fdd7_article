@@ -461,7 +461,7 @@ config:
 
 In the context of this project, it is imperative to possess graphical documentation. Therefore, I have opted for the utilization of [draw.io](https://draw.io/) for this purpose.
 
-![](./pic/image28.png)
+![](./pic/image28.png) (https://t36838126.p.clickup-attachments.com/t36838126/def32ea1-6be5-4458-a082-a626648bfe25/nearshore_2023.08.03_graphic_2.png) 
 
 Commencing from the selection of the provider, outbound connections, the establishment of a legend, depiction of data flows, network segregation, the configuration of the mesh, software functionalities, identification of unoccupied RJ45 slots, consideration of future software requirements, and specification of network hardware.
 
