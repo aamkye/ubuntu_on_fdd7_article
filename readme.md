@@ -465,8 +465,6 @@ In the context of this project, it is imperative to possess graphical documentat
 
 Commencing from the selection of the provider, outbound connections, the establishment of a legend, depiction of data flows, network segregation, the configuration of the mesh, software functionalities, identification of unoccupied RJ45 slots, consideration of future software requirements, and specification of network hardware.
 
-![](./pic/image29.png)
-
 Additionally, it involves the creation of a connection diagram, representation of the docking station, specification of the server, specification of virtual machines (VMs) and Kubernetes (K8s) deployments, as well as the ZFS diagram illustrating the disk architecture.
 
 These measures are crucial to ensure future reference and to prevent any confusion or loss of information.
@@ -492,8 +490,8 @@ But hold your horses, folks! We can't forget about the second network, designed 
 
 In the end, my friends, it's all about preserving domestic tranquility in the face of technological mishaps. So, let's raise a glass to the two Wi-Fi networks because they're the real MVPs of our connected household. Cheers to endless internet for everyone, even when I'm on a rampage of destruction!
 
-![](./pic/image32.png)
-[Source](https://www.techadvisor.com/article/721027/tp-link-deco-p9-review.html)
+![](./pic/image32.jpg)
+[Source](https://oiot.pl/wp-content/uploads/2020/10/recenzja-tp-link-deco-m4-oiot-09.jpg)
 
 Ah, my personal favorite — VPN. Have you ever experienced the peculiar scenario of toiling away at a company for X years, while the esteemed security department assumes you're diligently working from country Y, only to be abruptly confronted with a malfunctioning VPN server that "teleports" you back to your original country, Z? The inevitable phone call from said security department ensues, bewildered by your sudden appearance in country Z. If you answered in the affirmative, rest assured, you're doing it right!
 
